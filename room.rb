@@ -1,6 +1,11 @@
+# Rooms can keep track of the entry fees/spending of the guests - maybe add a bar tab/bar class?
+# Add anything extra you think would be good to have at a karaoke venue!
+
+
+
 class Room
 
-attr_reader :name, :songs, :guests, :fee, :capactiy
+attr_reader :name, :songs, :guests, :fee, :capactiy, :total_fees
 
   def initialize(name, songs, guests, fee, capactiy)
     @name = name
@@ -8,6 +13,7 @@ attr_reader :name, :songs, :guests, :fee, :capactiy
     @guests = guests
     @fee = fee
     @capactiy = capactiy
+    @total_fees = 0
 
   end
 
@@ -21,7 +27,9 @@ attr_reader :name, :songs, :guests, :fee, :capactiy
 
   def guest_check_in(guest)
     guest.wallet_amend(@fee)
+    total_fee_tally
     @guests.push(guest)
+    @total_fees += @fee
   end
 
   def guest_check_out(guest)
@@ -32,5 +40,22 @@ attr_reader :name, :songs, :guests, :fee, :capactiy
     return @guests.count()
   end
 
+  def reach_cap(guest)
+    if @guests.size <= @capactiy
+       return guest_check_in(guest)
+    else
+      @guests.clear
+       return "sorry, room is too full you will need to find another room"
+    end
+  end
+
+  def find_fav_song(guest)
+     @songs.find{|song| song == guest.fav_song}
+      return "Whoo!"
+  end
+
+  def total_fee_tally
+    @total_fees = @guests.size * @fee
+  end
 
 end
