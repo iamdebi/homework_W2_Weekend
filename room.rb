@@ -20,7 +20,8 @@ attr_reader :name, :songs, :guests, :fee, :capactiy
   end
 
   def guest_check_in(guest)
-    return @guests.push(guest)
+    guest.wallet_amend(@fee)
+    @guests.push(guest)
   end
 
   def guest_check_out(guest)

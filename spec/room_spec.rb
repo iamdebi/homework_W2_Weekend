@@ -50,6 +50,10 @@ class RoomTest < MiniTest::Test
     assert_equal(3, @room1.guest_count)
   end
 
+  def test_can_acess_guest_Wallet
+    assert_equal(50, @guest4.wallet)
+  end
+
   def test_add_song
     @room1.add_song(@song4)
     assert_equal(4, @room1.song_count)
@@ -58,6 +62,7 @@ class RoomTest < MiniTest::Test
   def test_guest_check_in
     @room1.guest_check_in(@guest4)
     assert_equal(4, @room1.guest_count)
+    assert_equal(40, @guest4.wallet)
   end
 
   def test_guest_check_out

@@ -7,5 +7,8 @@ class Guest
    @wallet = wallet
  end
 
+ def wallet_amend(amount)
+   @wallet -= amount
+ end
 
 end
