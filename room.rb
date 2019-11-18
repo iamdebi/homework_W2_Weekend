@@ -5,15 +5,17 @@
 
 class Room
 
-attr_reader :name, :songs, :guests, :fee, :capactiy, :total_fees
+attr_reader :name, :songs, :guests, :fee, :capactiy, :total_fees, :drinks
 
-  def initialize(name, songs, guests, fee, capactiy)
+  def initialize(name, songs, guests, fee, capactiy, drinks)
     @name = name
     @songs = songs
     @guests = guests
     @fee = fee
     @capactiy = capactiy
     @total_fees = 0
+    @drinks = drinks
+    @bar_tab = 0
 
   end
 

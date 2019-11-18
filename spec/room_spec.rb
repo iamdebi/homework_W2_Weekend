@@ -3,6 +3,7 @@ require('minitest/reporters')
 require_relative('../song')
 require_relative('../room')
 require_relative('../guest')
+require_relative('../drinks')
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
@@ -32,8 +33,18 @@ class RoomTest < MiniTest::Test
     @party = [@guest1, @guest2, @guest3]
     @bigger_party = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
 
-    @room1 = Room.new("Pop Punk", @playlist1, @party, 10, 5)
-    @room2 = Room.new("Pop Punk", @playlist2, @bigger_party, 15, 3)
+    @drink1 = Drink.new("Jack Daniels", 6)
+    @drink2 = Drink.new("Old Fashion", 9)
+    @drink3 = Drink.new("Southern Comfort", 5.5)
+    @drink4 = Drink.new("Cidre", 5)
+    @drink5 = Drink.new("Tenents", 4.5)
+    @drink6 = Drink.new("Expresso Martini", 7)
+    @drink7 = Drink.new("Pressco", 7)
+
+    @drinks = [@drink1, @drink2, @drink3, @drink4, @drink5, @drink6, @drink7]
+
+    @room1 = Room.new("Pop Punk", @playlist1, @party, 10, 5, @drinks)
+    @room2 = Room.new("Pop Punk", @playlist2, @bigger_party, 15, 3, @drinks)
 
 
   end
