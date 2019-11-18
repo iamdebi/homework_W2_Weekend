@@ -5,7 +5,7 @@
 
 class Room
 
-attr_reader :name, :songs, :guests, :fee, :capactiy, :total_fees, :drinks
+attr_reader :name, :songs, :guests, :fee, :capactiy, :total_fees, :drinks, :bar_tab
 
   def initialize(name, songs, guests, fee, capactiy, drinks)
     @name = name
@@ -58,6 +58,11 @@ attr_reader :name, :songs, :guests, :fee, :capactiy, :total_fees, :drinks
 
   def total_fee_tally
     @total_fees = @guests.size * @fee
+  end
+
+  def sell_drink(guest, drink)
+    @bar_tab += drink.price
+    guest.buy_drink(drink)
   end
 
 end

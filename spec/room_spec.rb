@@ -3,7 +3,7 @@ require('minitest/reporters')
 require_relative('../song')
 require_relative('../room')
 require_relative('../guest')
-require_relative('../drinks')
+require_relative('../drink')
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
@@ -106,6 +106,13 @@ class RoomTest < MiniTest::Test
     @room1.total_fee_tally
     result = @room1.total_fees
     assert_equal(30, result)
+  end
+
+  def test_sell_drink
+    @room1.sell_drink(@guest1, @drink2)
+    assert_equal(1, @guest1.drink_count)
+    assert_equal(91, @guest1.wallet)
+    assert_equal(9, @room1.bar_tab)
   end
 
 
